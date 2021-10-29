@@ -33,6 +33,9 @@ CREATE TABLE `mobil` (
   `warna` varchar(32) NOT NULL,
   `plat_nomor` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `mobil` (`merk`, `pabrik`, `warna`, `plat_nomor`) VALUES ('BIMA 1.2', 'ESEMKA', 'PUTIH', 'H4012IO')
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
