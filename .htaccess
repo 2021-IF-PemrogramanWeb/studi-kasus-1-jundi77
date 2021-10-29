@@ -1,0 +1,4 @@
+<files config.php config.example.php db_connection.php>
+    order allow,deny
+    deny from all
+</files>
