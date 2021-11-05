@@ -66,6 +66,8 @@ $query = mysqli_query($db, $sql);
             <i class="fas fa-circle nav-icon"></i>
             <p>Table</p>
         </a>
+        </li>
+        <li class="nav-item">
         <a href="./view_db_example.php" class="nav-link active">
             <i class="fas fa-circle nav-icon"></i>
             <p>DB Table</p>
