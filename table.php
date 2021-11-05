@@ -1,3 +1,15 @@
+<?php
+
+session_start();
+
+// Cek kalau sudah login
+if(!isset($_SESSION["loggedin"]) or !$_SESSION["loggedin"]){
+  header("location: login.php");
+  exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +57,7 @@
         </li>
         <li class="nav-header">MENU</li>
         <li class="nav-item">
-        <a href="./table.html" class="nav-link active">
+        <a href="./table.php" class="nav-link active">
             <i class="fas fa-circle nav-icon"></i>
             <p>Table</p>
         </a>
@@ -63,7 +75,7 @@
         </a>
         </li>
         <li class="nav-item">
-        <a href="./login.html" class="nav-link">
+        <a href="login.php?logout" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Logout</p>
         </a>
@@ -98,6 +110,16 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
+        <div class="col-md-2 col-xs-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                Tabel Reason
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
           <div class="col-md-10 col-xs-12">
             <div class="card">
               <!-- /.card-header -->
