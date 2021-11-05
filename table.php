@@ -63,7 +63,7 @@ if(!isset($_SESSION["loggedin"]) or !$_SESSION["loggedin"]){
         </a>
         </li>
         <li class="nav-item">
-        <a href="./graphs.html" class="nav-link">
+        <a href="./graphs.php" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Graph</p>
         </a>
