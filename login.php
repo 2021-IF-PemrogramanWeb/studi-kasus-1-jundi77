@@ -2,6 +2,12 @@
 
 session_start();
 
+if(isset($_GET["logout"])){
+  session_destroy();
+  header("location: login.php");
+  exit;
+}
+
 // Cek kalau sudah login
 if(isset($_SESSION["loggedin"]) and $_SESSION["loggedin"] === true){
   header("location: table.php");
