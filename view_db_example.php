@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+// Cek kalau sudah login
+if(!isset($_SESSION["loggedin"]) or !$_SESSION["loggedin"]){
+  header("location: login.php");
+  exit;
+}
+
 include 'db_connection.php';
 
 $sql = "SELECT * FROM mobil";
@@ -54,13 +62,17 @@ $query = mysqli_query($db, $sql);
         </li>
         <li class="nav-header">MENU</li>
         <li class="nav-item">
-        <a href="./table.html" class="nav-link active">
+        <a href="./table.php" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Table</p>
         </a>
+        <a href="./view_db_example.php" class="nav-link active">
+            <i class="fas fa-circle nav-icon"></i>
+            <p>DB Table</p>
+        </a>
         </li>
         <li class="nav-item">
-        <a href="./graphs.html" class="nav-link">
+        <a href="./graphs.php" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Graph</p>
         </a>
@@ -72,7 +84,7 @@ $query = mysqli_query($db, $sql);
         </a>
         </li>
         <li class="nav-item">
-        <a href="./login.html" class="nav-link">
+        <a href="login.php?logout" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Logout</p>
         </a>

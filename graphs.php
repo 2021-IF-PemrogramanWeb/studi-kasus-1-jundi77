@@ -61,6 +61,10 @@ if(!isset($_SESSION["loggedin"]) or !$_SESSION["loggedin"]){
             <i class="fas fa-circle nav-icon"></i>
             <p>Table</p>
         </a>
+        <a href="./view_db_example.php" class="nav-link">
+            <i class="fas fa-circle nav-icon"></i>
+            <p>DB Table</p>
+        </a>
         </li>
         <li class="nav-item">
         <a href="./graphs.php" class="nav-link active">
@@ -75,7 +79,7 @@ if(!isset($_SESSION["loggedin"]) or !$_SESSION["loggedin"]){
         </a>
         </li>
         <li class="nav-item">
-        <a href="./login.php?logout" class="nav-link">
+        <a href="login.php?logout" class="nav-link">
             <i class="fas fa-circle nav-icon"></i>
             <p>Logout</p>
         </a>
