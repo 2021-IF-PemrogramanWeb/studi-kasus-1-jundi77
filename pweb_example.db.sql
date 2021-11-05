@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 29, 2021 at 07:36 AM
+-- Generation Time: Nov 05, 2021 at 07:52 AM
 -- Server version: 10.4.20-MariaDB
 -- PHP Version: 8.0.8
 
@@ -34,8 +34,54 @@ CREATE TABLE `mobil` (
   `plat_nomor` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `mobil` (`merk`, `pabrik`, `warna`, `plat_nomor`) VALUES ('BIMA 1.2', 'ESEMKA', 'PUTIH', 'H4012IO')
+--
+-- Dumping data for table `mobil`
+--
 
+INSERT INTO `mobil` (`merk`, `pabrik`, `warna`, `plat_nomor`) VALUES
+('BIMA 1.2', 'ESEMKA', 'PUTIH', 'H4012IO'),
+('BIMA 1.2', 'ESEMKA', 'MERAH', 'H4013IO'),
+('BIMA 1.3', 'ESEMKA', 'PUTIH', 'H5012IO');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL,
+  `username` varchar(128) NOT NULL,
+  `password` varchar(256) NOT NULL,
+  `comments` varchar(512) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `comments`) VALUES
+(1, 'testAkun', '$2y$10$3xY6qXzhAxHeuDhWr6fHCORn0ELjq4ebsGpXV/TWqUymoLy5UdgcS', 'Akun untuk testing login');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
