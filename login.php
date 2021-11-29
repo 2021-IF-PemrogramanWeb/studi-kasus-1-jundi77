@@ -3,6 +3,14 @@
 session_start();
 
 if(isset($_GET["logout"])){
+  if (ini_get("session.use_cookies")) {
+    $_SESSION = [];
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+  }
   session_destroy();
   header("location: login.php");
   exit;
@@ -10,23 +18,27 @@ if(isset($_GET["logout"])){
 
 // Cek kalau sudah login
 if(isset($_SESSION["loggedin"]) and $_SESSION["loggedin"] === true){
+  session_regenerate_id(true); 
   header("location: table.php");
   exit;
 }
 
 $username = $password = $username_err = $password_err = $wrong = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if ($_POST["token"] != $_SESSION["csrf_token"]) {
+    $username_err = "Halaman kadaluarsa, silahkan coba lagi";
+  }
 
   if (empty(trim($_POST["username"]))) {
     $username_err = "Masukkan username";
   } else {
-    $username = $_POST["username"];
+    $username = filter_var(trim($_POST["username"]), FILTER_SANITIZE_EMAIL);
   }
 
   if (empty(trim($_POST["password"]))) {
     $password_err = "Masukkan password";
   } else {
-    $password = $_POST["password"];
+    $password = trim($_POST["password"]);
   }
 
   if (empty($username_err) && empty($password_err)) {
@@ -74,6 +86,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 // DEFAULT pakai GET
+// SET CSRF TOKEN
+$_SESSION["csrf_token"] = random_bytes(64);
+
 ?>
 
 <!DOCTYPE html>
@@ -139,6 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
           <!-- /.col -->
           <div class="col-4">
+            <input type="hidden" name="token" value="<?php echo $_SESSION["csrf_token"]; ?>">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
