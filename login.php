@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // DEFAULT pakai GET
 // SET CSRF TOKEN
-$_SESSION["csrf_token"] = random_bytes(64);
+$_SESSION["csrf_token"] = hash("sha256", '' . time() . rand());
 
 ?>
 
